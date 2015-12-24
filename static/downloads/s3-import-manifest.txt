@@ -1,0 +1,62 @@
+# S3 Import Manifest Template
+#
+# Update the manifest key values that contain brackets [] with valid values 
+# and save the manifest file.  Make sure to remove the brackets [], e.g.  
+# bucket:mybucket is valid, while bucket:[mybucket] is invalid. Save the file
+# as MyS3ImportManifest.txt in the same folder as your AWSCredentials.properties
+# file.
+# 
+# For additional details and more manifest options please see: 
+# http://docs.amazonwebservices.com/AWSImportExport/latest/API/index.html
+# 
+# Fields to Update:
+# 1. bucket - Specifies the Amazon S3 bucket where AWS Import/Export loads
+# your data. You must create a bucket before we can load data into it; we do
+# not create the bucket for you. The account specifed by accessKeyId must have write
+# permissions on this bucket, e.g. bucket:mybucket. Only one bucket may be specified 
+# for each S3 Import job
+# 
+# 2. deviceId - This ID is your storage device's serial number or other unique
+# identifier. If your device does not have a unique number, please place a
+# sticker with a unique identifier onto the device and then enter that
+# identifier as the deviceId, e.g. deviceId:S/N 123XXXY1934883
+# 
+# 3. eraseDevice - Specify yes to acknowledge that AWS will erase your 
+# device following the import operation before shipping it. If the eraseDevice field
+# is missing or if the value is not yes, the job request will fail.
+# 
+# 4. notificationEmail - Enter one or more email addresses, separated
+# by semicolons, so we can contact you if there are any problems. If the 
+# notificationEmail field is missing or empty, the job request will fail.
+# 
+# 5. name, street1, city, stateOrProvice, postalCode, country - All of these
+# parameters are subparameters of returnAddress. Use these parameters to
+# specify where we should return your storage device. Your return address must
+# be a physical street address. UPS does not deliver to postal boxes.
+#
+# 6. phoneNumber - Make sure to include the country code 
+#
+# 7. company, street2, street3 - A subparameter of returnAddress, which you
+# use to specify where we should return your storage device. These fields are
+# optional and can be deleted.
+#
+manifestVersion:2.0
+generator:Text editor
+bucket:[Enter import bucket]
+deviceId:[Enter device serial number]
+eraseDevice:yes
+notificationEmail:[Email addresses, semicolon separated]
+trueCryptPassword:[Optional – password]
+acl:private
+serviceLevel:standard
+returnAddress:
+    name:[Your name]
+    company:[Optional - your company]
+    street1:[Your street]
+    street2:[Optional - additional street info]
+    street3:[Optional - additional street info]
+    city:[Your city]
+    stateOrProvince:[Required for USA and Canada. Your state or province]
+    postalCode:[Your postal code]
+    country:[Your country]
+    phoneNumber:[Contact number]
