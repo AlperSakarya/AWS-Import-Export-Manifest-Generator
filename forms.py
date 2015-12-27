@@ -5,6 +5,8 @@ from wtforms import TextField, TextAreaField, SubmitField, PasswordField, valida
 class S3ImportForm(Form):
     deviceId = TextField(u'Device ID', validators=[validators.required()])
     notificationEmail = TextField("Notification Email",  [validators.email("Please enter 7 characters to search")])
+    region = SelectField(u'Region', choices=[('us-east-1', 'us-east-1'), ('us-west-1', 'us-west-1'),
+                    ('us-west-2', 'us-west-2'), ('eu-west-1 ', 'eu-west-1'), ('ap-southeast-1', 'ap-southeast-1')])
     acl = TextField("ACL",  [validators.email("Please enter an ACL if you like")])
     bucket = TextField("Import Bucket", [validators.required("Please enter the bucket name for importing files")])
     logPrefix = TextField("Log Prefix", [validators.required("Please enter a log prefix")])

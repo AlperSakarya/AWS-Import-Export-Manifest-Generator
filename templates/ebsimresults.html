@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h3>Generated EBS Import Manifest File</h3>
+
+<strong> Please copy paste below content only</strong><p><br></p>
+
+<div style="background-color: #eee; font-family:'Courier New', Courier, mono; color:#006;
+            border:1px dashed #333333; padding:1em; overflow:auto; width:95%; ">
+
+manifestVersion: 3.0 <br>
+generator: AWS ImportExport Manifest Buddy<br>
+deviceId: {{ form.deviceId.data }} <br>
+eraseDevice: yes<br>
+notificationEmail: {{ form.notificationEmail.data }}<br>
+{% if form.acl.data == "" %}
+    {%else%}
+    acl: {{ form.acl.data }}<br>
+{%endif%}
+{% if form.cacheControl.data == "" %}
+    {%else%}
+    cacheControl: {{ form.cacheControl.data }}<br>
+{%endif%}
+{% if form.contentLanguage.data == "" %}
+    {%else%}
+    contentLanguage:&nbsp;{{ form.contentLanguage.data }}<br>
+{%endif%}
+{% if form.contentTypes.data == "" %}
+    {%else%}
+    contentTypes:<br>
+    &nbsp;jpg:&nbsp;image/jpeg<br>
+    &nbsp;JPG:&nbsp;image/jpeg<br>
+    &nbsp;gif:&nbsp;image/gif<br>
+    &nbsp;GIF:&nbsp;image/gif<br>
+    &nbsp;mp3:&nbsp;audio/mpeg<br>
+    &nbsp;txt:&nbsp;text/plain<br>
+    &nbsp;zip:&nbsp;application/zip<br>
+{%endif%}
+{% if form.diskTimestampMetadataKey.data == "" %}
+    {%else%}
+    diskTimestampMetadataKey: {{ form.diskTimestampMetadataKey.data }}<br>
+{%endif%}
+{% if form.ignore.data == "" and form.ignore2.data == "" and form.ignore3.data == "" and
+        form.ignore4.data == "" and form.ignore5.data == "" and form.ignore6.data == ""
+        and form.ignore7.data == ""%}
+    {%else%}
+ignore:<br>
+{%endif%}
+{% if form.ignore.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^lost\+found/<br>
+{%endif%}
+{% if form.ignore2.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^\$Recycle\.bin/<br>
+    &nbsp;&nbsp;-&nbsp;^RECYCLER/<br>
+    &nbsp;&nbsp;-&nbsp;^RECYCLED/<br>
+{%endif%}
+{% if form.ignore3.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;.*~$<br>
+    &nbsp;&nbsp;-&nbsp;.*\.swp$<br>
+{%endif%}
+{% if form.ignore4.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^{{ form.ignore4.data }}/<br>
+{%endif%}
+{% if form.ignore5.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^{{ form.ignore5.data }}/<br>
+{%endif%}
+{% if form.ignore6.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;\.{{ form.ignore6.data }}$<br>
+{%endif%}
+{% if form.ignore7.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;\.{{ form.ignore7.data }}$<br>
+{%endif%}
+{% if form.logPrefix.data == "" %}
+    {%else%}
+    logPrefix:&nbsp;{{ form.logPrefix.data }}<br>
+{%endif%}
+{% if form.logBucket.data == "" %}
+    {%else%}
+    logBucket:&nbsp;{{ form.logBucket.data }}<br>
+{%endif%}
+{% if form.prefix.data == "" %}
+    {%else%}
+    prefix:&nbsp;{{ form.prefix.data }}/<br>
+{%endif%}
+{% if form.substitutions.data == "" and form.substitutionsb.data =="" and
+        form.substitutions2.data == "" and form.substitutions2b.data == "" %}
+    {% else %}
+    substitutions:<br>
+{% endif %}
+{% if form.substitutions.data == "" and form.substitutions.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;&nbsp;&nbsp;&#34;{{ form.substitutions.data }}&#34;&nbsp;&#58;&nbsp;&#34;{{ form.substitutionsb.data }}&#34;<br>
+{%endif%}
+{% if form.substitutions2.data == "" and form.substitutions2b.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;&nbsp;&nbsp;&#34;{{ form.substitutions2.data }}&#34;&nbsp;&#58;&nbsp;&#34;{{ form.substitutions2b.data }}&#34;<br>
+{%endif%}
+{% if form.setContentEncodingForGzFiles.data == "" %}
+    {%else%}
+    setContentEncodingForGzFiles:&nbsp;{{ form.setContentEncodingForGzFiles.data }}<br>
+{%endif%}
+{% if form.staticMetadata.data == "" %}
+    {%else%}
+    staticMetadata:<br>
+    {{ form.staticMetadata.data }}
+{%endif%}
+{% if form.pinCode.data == "" %}
+    {%else%}
+    pinCode:<br>
+    {{ form.pinCode.data }}
+{%endif%}
+{% if form.trueCryptPassword.data == "" %}
+    {%else%}
+    trueCryptPassword:<br>
+    {{ form.trueCryptPassword.data }}
+{%endif%}
+{% if form.storageClass.data == "" %}
+    {%else%}
+    storageClass:&nbsp;{{ form.storageClass.data }}<br>
+{%endif%}
+returnAddress:<br>
+&nbsp;&nbsp;&nbsp;name:&nbsp;{{ form.name.data }}<br>
+
+    {% if form.company.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;company:&nbsp;{{ form.company.data }}<br>
+    {% endif %}
+
+&nbsp;&nbsp;&nbsp;street1:&nbsp;{{ form.street1.data }}<br>
+
+    {% if form.street2.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;street2:&nbsp;{{ form.street2.data }}<br>
+    {% endif %}
+
+    {% if form.street3.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;street3:&nbsp;{{ form.street3.data }}<br>
+    {% endif %}
+&nbsp;&nbsp;&nbsp;city:&nbsp;{{ form.city.data }}<br>
+&nbsp;&nbsp;&nbsp;stateOrProvince:&nbsp;{{ form.stateOrProvince.data }}<br>
+&nbsp;&nbsp;&nbsp;postalCode:&nbsp;{{ form.postalCode.data }}<br>
+&nbsp;&nbsp;&nbsp;phoneNumber:&nbsp;{{ form.phoneNumber.data }}<br>
+&nbsp;&nbsp;&nbsp;country:&nbsp;{{ form.country.data }}<br>
+operations:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- destination: ebs-snapshot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source: device<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;region:&nbsp;{{ form.region.data }}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deviceCapacityGreaterThan1TB: no<br>
+{% if form.serviceLevel.data == "" %}
+    {% else %}
+    serviceLevel: {{ form.serviceLevel.data }}<br>
+{%endif%}
+
+<!-- Customs Options -->
+{% if form.dataDescription.data == "" %}
+    {% else %}
+customs:<br>
+&nbsp;&nbsp;&nbsp;dataDescription: {{ form.dataDescription.data }}<br>
+&nbsp;&nbsp;&nbsp;deviceCountryOfOrigin: {{ form.deviceCountryOfOrigin.data }}<br>
+&nbsp;&nbsp;&nbsp;deviceValue: {{ form.deviceValue.data }}<br>
+&nbsp;&nbsp;&nbsp;deviceType: {{ form.deviceType.data }}<br>
+&nbsp;&nbsp;&nbsp;encryptedData: {{ form.encryptedData.data }}<br>
+{% if form.encryptedData.data == "" %}
+{% else %}
+&nbsp;&nbsp;&nbsp;encryptionClassification: 5D992<br>
+{% endif %}
+&nbsp;&nbsp;&nbsp;exportCertifierName: {{ form.exportCertifierName.data }}<br>
+&nbsp;&nbsp;&nbsp;requiresExportLicense: {{ form.requiresExportLicense.data }}<br>
+    {% if form.typeOfExport.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;typeOfExport: {{ form.typeOfExport.data }}
+    {% endif %}
+
+{% endif %}
+</div>
+{% endblock %}

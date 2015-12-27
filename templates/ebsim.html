@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
  
 {% block content %}
-    <h4>New S3 Import Job Manifest File Generation</h4>
+    <h4>New EBS Import Job Manifest File Generation</h4>
     <p class="text-primary">Required sections are in blue</p>
     <br><br>
  <!-- Required Options -->
-    <form action="{{ url_for('s3im') }}" method=post>
+    <form action="{{ url_for('ebsim') }}" method=post>
         <div class="row">
             <div class="col-md-3 text-primary">{{ form.deviceId.label }}</div>
             <div class="col-md-3">{{ form.deviceId }}</div>
@@ -13,9 +13,10 @@
             <div class="col-md-3 text-primary">{{ form.notificationEmail.label }}</div>
             <div class="col-md-2">{{ form.notificationEmail }}</div>
         <p><br>
-            <div class="col-md-3 text-primary">{{ form.bucket.label }}</div>
-            <div class="col-md-2">{{ form.bucket }}</div>
-        <p><br><br>
+            <div class="col-md-3 text-primary">{{ form.region.label }}</div>
+            <div class="col-md-2">{{ form.region }}</div>
+        <p><br>
+        <p><br>
             <div class="col-md-3"><strong>Return Shipping Options:</strong></div>
         <p><br>
             <div class="col-md-3 text-primary">{{ form.name.label }}</div>
