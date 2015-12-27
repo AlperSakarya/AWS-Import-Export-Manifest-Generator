@@ -1,215 +1,185 @@
 {% extends "layout.html" %}
- 
 {% block content %}
-    <h4>New Glacier Import Job Manifest File Generation</h4>
-    <p class="text-primary">Required sections are in blue</p>
-    <br><br>
- <!-- Required Options -->
-    <form action="{{ url_for('ebsim') }}" method=post>
-        <div class="row">
-            <div class="col-md-3 text-primary">{{ form.deviceId.label }}</div>
-            <div class="col-md-3">{{ form.deviceId }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.notificationEmail.label }}</div>
-            <div class="col-md-2">{{ form.notificationEmail }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.region.label }}</div>
-            <div class="col-md-2">{{ form.region }}</div>
-         <p><br>
-            <div class="col-md-3 text-primary">{{ form.archivecomment.label }}</div>
-            <div class="col-md-2">{{ form.archivecomment }}</div>
-        <p><br>
-        <p><br>
-            <div class="col-md-3"><strong>Return Shipping Options:</strong></div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.name.label }}</div>
-            <div class="col-md-2">{{ form.name }}</div>
-        <p><br>
-            <div class="col-md-3">{{ form.company.label }}</div>
-            <div class="col-md-2">{{ form.company }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.street1.label }}</div>
-            <div class="col-md-2">{{ form.street1 }}</div>
-        <p><br>
-            <div class="col-md-3">{{ form.street2.label }}</div>
-            <div class="col-md-2">{{ form.street2 }}</div>
-        <p><br>
-            <div class="col-md-3">{{ form.street3.label }}</div>
-            <div class="col-md-2">{{ form.street3 }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.city.label }}</div>
-            <div class="col-md-2">{{ form.city }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.stateOrProvince.label }}</div>
-            <div class="col-md-2">{{ form.stateOrProvince }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.postalCode.label }}</div>
-            <div class="col-md-2">{{ form.postalCode }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.phoneNumber.label }}</div>
-            <div class="col-md-2">{{ form.phoneNumber }}</div>
-        <p><br>
-            <div class="col-md-3 text-primary">{{ form.country.label }}</div>
-            <div class="col-md-2">{{ form.country }}</div>
-        <p><br><br>
- <!-- Required Options END-->
 
-<!-- Password Options -->
-        <strong>Show Password (Encryption) Options:
-            <a href="javascript:;" onClick="document.getElementById('hideaway2').style.display='block';">Show</a>
-            <a href="javascript:;" onClick="document.getElementById('hideaway2').style.display='none';">Hide</a>
-        </strong><p>
+<h3>Generated Glacier Import Manifest File</h3>
 
-        <div id="hideaway2" style="display:none;">
-                <div class="col-md-3">{{ form.trueCryptPassword.label }}</div>
-                <div class="col-md-2">{{ form.trueCryptPassword }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.pinCode.label }}</div>
-                <div class="col-md-2">{{ form.pinCode }}</div>
-            <p><br>
-        </div>
-<!-- Password Options END-->
+<strong> Please copy paste below content only</strong><p><br></p>
 
+<div style="background-color: #eee; font-family:'Courier New', Courier, mono; color:#006;
+            border:1px dashed #333333; padding:1em; overflow:auto; width:95%; ">
 
-<!-- Substitutions Options -->
-        <strong>Show Substitutions Options:
-            <a href="javascript:;" onClick="document.getElementById('hideaway6').style.display='block';">Show</a>
-            <a href="javascript:;" onClick="document.getElementById('hideaway6').style.display='none';">Hide</a>
-        </strong><p>
-        <div id="hideaway6" style="display:none;">
-                <div class="col-md-3">{{ form.substitutions.label }}</div>
-                <div class="col-md-2">{{ form.substitutions }}</div>
-                <div class="col-md-2">{{ form.substitutionsb }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.substitutions2.label }}</div>
-                <div class="col-md-2">{{ form.substitutions2 }}</div>
-                <div class="col-md-2">{{ form.substitutions2b }}</div>
-            <p><br>
-        </div>
-<!-- Substitution Options END -->
+manifestVersion: 3.0 <br>
+generator: AWS ImportExport Manifest Buddy<br>
+deviceId: {{ form.deviceId.data }} <br>
+eraseDevice: yes<br>
+notificationEmail: {{ form.notificationEmail.data }}<br>
+{% if form.acl.data == "" %}
+    {%else%}
+    acl: {{ form.acl.data }}<br>
+{%endif%}
+{% if form.cacheControl.data == "" %}
+    {%else%}
+    cacheControl: {{ form.cacheControl.data }}<br>
+{%endif%}
+{% if form.contentLanguage.data == "" %}
+    {%else%}
+    contentLanguage:&nbsp;{{ form.contentLanguage.data }}<br>
+{%endif%}
+{% if form.contentTypes.data == "" %}
+    {%else%}
+    contentTypes:<br>
+    &nbsp;jpg:&nbsp;image/jpeg<br>
+    &nbsp;JPG:&nbsp;image/jpeg<br>
+    &nbsp;gif:&nbsp;image/gif<br>
+    &nbsp;GIF:&nbsp;image/gif<br>
+    &nbsp;mp3:&nbsp;audio/mpeg<br>
+    &nbsp;txt:&nbsp;text/plain<br>
+    &nbsp;zip:&nbsp;application/zip<br>
+{%endif%}
+{% if form.diskTimestampMetadataKey.data == "" %}
+    {%else%}
+    diskTimestampMetadataKey: {{ form.diskTimestampMetadataKey.data }}<br>
+{%endif%}
+{% if form.ignore.data == "" and form.ignore2.data == "" and form.ignore3.data == "" and
+        form.ignore4.data == "" and form.ignore5.data == "" and form.ignore6.data == ""
+        and form.ignore7.data == ""%}
+    {%else%}
+ignore:<br>
+{%endif%}
+{% if form.ignore.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^lost\+found/<br>
+{%endif%}
+{% if form.ignore2.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^\$Recycle\.bin/<br>
+    &nbsp;&nbsp;-&nbsp;^RECYCLER/<br>
+    &nbsp;&nbsp;-&nbsp;^RECYCLED/<br>
+{%endif%}
+{% if form.ignore3.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;.*~$<br>
+    &nbsp;&nbsp;-&nbsp;.*\.swp$<br>
+{%endif%}
+{% if form.ignore4.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^{{ form.ignore4.data }}/<br>
+{%endif%}
+{% if form.ignore5.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;^{{ form.ignore5.data }}/<br>
+{%endif%}
+{% if form.ignore6.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;\.{{ form.ignore6.data }}$<br>
+{%endif%}
+{% if form.ignore7.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;-&nbsp;\.{{ form.ignore7.data }}$<br>
+{%endif%}
+{% if form.logPrefix.data == "" %}
+    {%else%}
+    logPrefix:&nbsp;{{ form.logPrefix.data }}<br>
+{%endif%}
+{% if form.logBucket.data == "" %}
+    {%else%}
+    logBucket:&nbsp;{{ form.logBucket.data }}<br>
+{%endif%}
+{% if form.prefix.data == "" %}
+    {%else%}
+    prefix:&nbsp;{{ form.prefix.data }}/<br>
+{%endif%}
+{% if form.substitutions.data == "" and form.substitutionsb.data =="" and
+        form.substitutions2.data == "" and form.substitutions2b.data == "" %}
+    {% else %}
+    substitutions:<br>
+{% endif %}
+{% if form.substitutions.data == "" and form.substitutions.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;&nbsp;&nbsp;&#34;{{ form.substitutions.data }}&#34;&nbsp;&#58;&nbsp;&#34;{{ form.substitutionsb.data }}&#34;<br>
+{%endif%}
+{% if form.substitutions2.data == "" and form.substitutions2b.data == "" %}
+    {%else%}
+    &nbsp;&nbsp;&nbsp;&nbsp;&#34;{{ form.substitutions2.data }}&#34;&nbsp;&#58;&nbsp;&#34;{{ form.substitutions2b.data }}&#34;<br>
+{%endif%}
+{% if form.setContentEncodingForGzFiles.data == "" %}
+    {%else%}
+    setContentEncodingForGzFiles:&nbsp;{{ form.setContentEncodingForGzFiles.data }}<br>
+{%endif%}
+{% if form.staticMetadata.data == "" %}
+    {%else%}
+    staticMetadata:<br>
+    {{ form.staticMetadata.data }}
+{%endif%}
+{% if form.pinCode.data == "" %}
+    {%else%}
+    pinCode:<br>
+    {{ form.pinCode.data }}
+{%endif%}
+{% if form.trueCryptPassword.data == "" %}
+    {%else%}
+    trueCryptPassword:<br>
+    {{ form.trueCryptPassword.data }}
+{%endif%}
+{% if form.storageClass.data == "" %}
+    {%else%}
+    storageClass:&nbsp;{{ form.storageClass.data }}<br>
+{%endif%}
+returnAddress:<br>
+&nbsp;&nbsp;&nbsp;name:&nbsp;{{ form.name.data }}<br>
 
+    {% if form.company.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;company:&nbsp;{{ form.company.data }}<br>
+    {% endif %}
 
-<!-- Ignore Options -->
-        <strong>Show Ignore Options:
-            <a href="javascript:;" onClick="document.getElementById('hideaway4').style.display='block';">Show</a>
-            <a href="javascript:;" onClick="document.getElementById('hideaway4').style.display='none';">Hide</a>
-        </strong><p>
+&nbsp;&nbsp;&nbsp;street1:&nbsp;{{ form.street1.data }}<br>
 
-        <div id="hideaway4" style="display:none;">
-                <div class="col-md-3">{{ form.ignore.label }}</div>
-                <div class="col-md-2">{{ form.ignore }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.ignore2.label }}</div>
-                <div class="col-md-2">{{ form.ignore2 }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.ignore3.label }}</div>
-                <div class="col-md-2">{{ form.ignore3 }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.ignore4.label }}</div>
-                <div class="col-md-2">{{ form.ignore4 }}</div>
-                <div class="col-md-2">{{ form.ignore5 }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.ignore6.label }}</div>
-                <div class="col-md-2">{{ form.ignore6 }}</div>
-                <div class="col-md-2">{{ form.ignore7 }}</div>
-            <p><br>
-            <p><br>
-        </div>
+    {% if form.street2.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;street2:&nbsp;{{ form.street2.data }}<br>
+    {% endif %}
 
-<!-- Ignore Options END-->
+    {% if form.street3.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;street3:&nbsp;{{ form.street3.data }}<br>
+    {% endif %}
+&nbsp;&nbsp;&nbsp;city:&nbsp;{{ form.city.data }}<br>
+&nbsp;&nbsp;&nbsp;stateOrProvince:&nbsp;{{ form.stateOrProvince.data }}<br>
+&nbsp;&nbsp;&nbsp;postalCode:&nbsp;{{ form.postalCode.data }}<br>
+&nbsp;&nbsp;&nbsp;phoneNumber:&nbsp;{{ form.phoneNumber.data }}<br>
+&nbsp;&nbsp;&nbsp;country:&nbsp;{{ form.country.data }}<br>
+operations:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- destination: ebs-snapshot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source: device<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;region:&nbsp;{{ form.region.data }}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deviceCapacityGreaterThan1TB: no<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;archiveComment:&nbsp;{{ form.archivecomment.data }}<br>
+    {% if form.serviceLevel.data == "" %}
+    {% else %}
+    serviceLevel: {{ form.serviceLevel.data }}<br>
+{%endif%}
 
-
-<!-- Additional Options -->
-        <strong>Show Additional Options:
-            <a href="javascript:;" onClick="document.getElementById('hideaway3').style.display='block';">Show</a>
-            <a href="javascript:;" onClick="document.getElementById('hideaway3').style.display='none';">Hide</a>
-        </strong>
-        <div id="hideaway3" style="display:none;">
-                <div class="col-md-3">{{ form.acl.label }}</div>
-                <div class="col-md-2">{{ form.acl }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.logPrefix.label }}</div>
-                <div class="col-md-2">{{ form.logPrefix }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.prefix.label }}</div>
-                <div class="col-md-2">{{ form.prefix }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.logBucket.label }}</div>
-                <div class="col-md-2">{{ form.logBucket }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.serviceLevel.label }}</div>
-                <div class="col-md-2">{{ form.serviceLevel }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.cacheControl.label }}</div>
-                <div class="col-md-2">{{ form.cacheControl }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.contentDisposition.label }}</div>
-                <div class="col-md-2">{{ form.contentDisposition }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.contentLanguage.label }}</div>
-                <div class="col-md-2">{{ form.contentLanguage }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.contentTypes.label }}</div>
-                <div class="col-md-2">{{ form.contentTypes }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.diskTimestampMetadataKey.label }}</div>
-                <div class="col-md-2">{{ form.diskTimestampMetadataKey }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.expires.label }}</div>
-                <div class="col-md-2">{{ form.expires }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.setContentEncodingForGzFiles.label }}</div>
-                <div class="col-md-2">{{ form.setContentEncodingForGzFiles }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.prefix.label }}</div>
-                <div class="col-md-3">{{ form.prefix }} /</div>
-            <p><br>
-                <div class="col-md-3">{{ form.staticMetadata.label }}</div>
-                <div class="col-md-2">{{ form.staticMetadata }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.storageClass.label }}</div>
-                <div class="col-md-2">{{ form.storageClass }}</div>
-            <p><br>
-        </div>
-<!-- Additional Options END-->
-<p></p>
 <!-- Customs Options -->
-        <strong>Show International Shipping (Customs) Options:
-            <a href="javascript:;" onClick="document.getElementById('hideaway').style.display='block';">Show</a>
-            <a href="javascript:;" onClick="document.getElementById('hideaway').style.display='none';">Hide</a>
-        </strong>
+{% if form.dataDescription.data == "" %}
+    {% else %}
+customs:<br>
+&nbsp;&nbsp;&nbsp;dataDescription: {{ form.dataDescription.data }}<br>
+&nbsp;&nbsp;&nbsp;deviceCountryOfOrigin: {{ form.deviceCountryOfOrigin.data }}<br>
+&nbsp;&nbsp;&nbsp;deviceValue: {{ form.deviceValue.data }}<br>
+&nbsp;&nbsp;&nbsp;deviceType: {{ form.deviceType.data }}<br>
+&nbsp;&nbsp;&nbsp;encryptedData: {{ form.encryptedData.data }}<br>
+{% if form.encryptedData.data == "" %}
+{% else %}
+&nbsp;&nbsp;&nbsp;encryptionClassification: 5D992<br>
+{% endif %}
+&nbsp;&nbsp;&nbsp;exportCertifierName: {{ form.exportCertifierName.data }}<br>
+&nbsp;&nbsp;&nbsp;requiresExportLicense: {{ form.requiresExportLicense.data }}<br>
+    {% if form.typeOfExport.data == "" %}
+        {% else %}
+        &nbsp;&nbsp;&nbsp;typeOfExport: {{ form.typeOfExport.data }}
+    {% endif %}
 
-        <div id="hideaway" style="display:none;">
-            <p class="text-primary">Required sections are in blue</p>
-                <div class="col-md-3 text-primary" >{{ form.dataDescription.label }}</div>
-                <div class="col-md-2">{{ form.dataDescription }}</div>
-            <p><br>
-                <div class="col-md-3 text-primary">{{ form.encryptedData.label }}</div>
-                <div class="col-md-2">{{ form.encryptedData }}</div>
-            <p><br>
-                <div class="col-md-3 text-primary">{{ form.exportCertifierName.label }}</div>
-                <div class="col-md-2">{{ form.exportCertifierName }}</div>
-            <p><br>
-                <div class="col-md-3 text-primary">{{ form.requiresExportLicense.label }}</div>
-                <div class="col-md-2">{{ form.requiresExportLicense }}</div>
-            <p><br>
-                <div class="col-md-3 text-primary">{{ form.deviceValue.label }}</div>
-                <div class="col-md-2">{{ form.deviceValue }}</div>
-            <p><br>
-                <div class="col-md-3 text-primary">{{ form.deviceCountryOfOrigin.label }}</div>
-                <div class="col-md-2">{{ form.deviceCountryOfOrigin }}</div>
-            <p><br>
-                <div class="col-md-3 text-primary">{{ form.deviceType.label }}</div>
-                <div class="col-md-2">{{ form.deviceType }}</div>
-            <p><br>
-                <div class="col-md-3">{{ form.typeOfExport.label }}</div>
-                <div class="col-md-2">{{ form.typeOfExport }}</div>
-        </div>
-<!-- Additional Options END-->
-            <p><br>
-                <div class="col-md-2">{{ form.submit }}</div>
-            <p><br>
-        </div>
-    </form>
-
+{% endif %}
+</div>
 {% endblock %}
