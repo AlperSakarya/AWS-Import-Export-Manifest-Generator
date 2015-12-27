@@ -1,0 +1,215 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+    <h4>New Glacier Import Job Manifest File Generation</h4>
+    <p class="text-primary">Required sections are in blue</p>
+    <br><br>
+ <!-- Required Options -->
+    <form action="{{ url_for('ebsim') }}" method=post>
+        <div class="row">
+            <div class="col-md-3 text-primary">{{ form.deviceId.label }}</div>
+            <div class="col-md-3">{{ form.deviceId }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.notificationEmail.label }}</div>
+            <div class="col-md-2">{{ form.notificationEmail }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.region.label }}</div>
+            <div class="col-md-2">{{ form.region }}</div>
+         <p><br>
+            <div class="col-md-3 text-primary">{{ form.archivecomment.label }}</div>
+            <div class="col-md-2">{{ form.archivecomment }}</div>
+        <p><br>
+        <p><br>
+            <div class="col-md-3"><strong>Return Shipping Options:</strong></div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.name.label }}</div>
+            <div class="col-md-2">{{ form.name }}</div>
+        <p><br>
+            <div class="col-md-3">{{ form.company.label }}</div>
+            <div class="col-md-2">{{ form.company }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.street1.label }}</div>
+            <div class="col-md-2">{{ form.street1 }}</div>
+        <p><br>
+            <div class="col-md-3">{{ form.street2.label }}</div>
+            <div class="col-md-2">{{ form.street2 }}</div>
+        <p><br>
+            <div class="col-md-3">{{ form.street3.label }}</div>
+            <div class="col-md-2">{{ form.street3 }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.city.label }}</div>
+            <div class="col-md-2">{{ form.city }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.stateOrProvince.label }}</div>
+            <div class="col-md-2">{{ form.stateOrProvince }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.postalCode.label }}</div>
+            <div class="col-md-2">{{ form.postalCode }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.phoneNumber.label }}</div>
+            <div class="col-md-2">{{ form.phoneNumber }}</div>
+        <p><br>
+            <div class="col-md-3 text-primary">{{ form.country.label }}</div>
+            <div class="col-md-2">{{ form.country }}</div>
+        <p><br><br>
+ <!-- Required Options END-->
+
+<!-- Password Options -->
+        <strong>Show Password (Encryption) Options:
+            <a href="javascript:;" onClick="document.getElementById('hideaway2').style.display='block';">Show</a>
+            <a href="javascript:;" onClick="document.getElementById('hideaway2').style.display='none';">Hide</a>
+        </strong><p>
+
+        <div id="hideaway2" style="display:none;">
+                <div class="col-md-3">{{ form.trueCryptPassword.label }}</div>
+                <div class="col-md-2">{{ form.trueCryptPassword }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.pinCode.label }}</div>
+                <div class="col-md-2">{{ form.pinCode }}</div>
+            <p><br>
+        </div>
+<!-- Password Options END-->
+
+
+<!-- Substitutions Options -->
+        <strong>Show Substitutions Options:
+            <a href="javascript:;" onClick="document.getElementById('hideaway6').style.display='block';">Show</a>
+            <a href="javascript:;" onClick="document.getElementById('hideaway6').style.display='none';">Hide</a>
+        </strong><p>
+        <div id="hideaway6" style="display:none;">
+                <div class="col-md-3">{{ form.substitutions.label }}</div>
+                <div class="col-md-2">{{ form.substitutions }}</div>
+                <div class="col-md-2">{{ form.substitutionsb }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.substitutions2.label }}</div>
+                <div class="col-md-2">{{ form.substitutions2 }}</div>
+                <div class="col-md-2">{{ form.substitutions2b }}</div>
+            <p><br>
+        </div>
+<!-- Substitution Options END -->
+
+
+<!-- Ignore Options -->
+        <strong>Show Ignore Options:
+            <a href="javascript:;" onClick="document.getElementById('hideaway4').style.display='block';">Show</a>
+            <a href="javascript:;" onClick="document.getElementById('hideaway4').style.display='none';">Hide</a>
+        </strong><p>
+
+        <div id="hideaway4" style="display:none;">
+                <div class="col-md-3">{{ form.ignore.label }}</div>
+                <div class="col-md-2">{{ form.ignore }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.ignore2.label }}</div>
+                <div class="col-md-2">{{ form.ignore2 }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.ignore3.label }}</div>
+                <div class="col-md-2">{{ form.ignore3 }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.ignore4.label }}</div>
+                <div class="col-md-2">{{ form.ignore4 }}</div>
+                <div class="col-md-2">{{ form.ignore5 }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.ignore6.label }}</div>
+                <div class="col-md-2">{{ form.ignore6 }}</div>
+                <div class="col-md-2">{{ form.ignore7 }}</div>
+            <p><br>
+            <p><br>
+        </div>
+
+<!-- Ignore Options END-->
+
+
+<!-- Additional Options -->
+        <strong>Show Additional Options:
+            <a href="javascript:;" onClick="document.getElementById('hideaway3').style.display='block';">Show</a>
+            <a href="javascript:;" onClick="document.getElementById('hideaway3').style.display='none';">Hide</a>
+        </strong>
+        <div id="hideaway3" style="display:none;">
+                <div class="col-md-3">{{ form.acl.label }}</div>
+                <div class="col-md-2">{{ form.acl }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.logPrefix.label }}</div>
+                <div class="col-md-2">{{ form.logPrefix }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.prefix.label }}</div>
+                <div class="col-md-2">{{ form.prefix }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.logBucket.label }}</div>
+                <div class="col-md-2">{{ form.logBucket }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.serviceLevel.label }}</div>
+                <div class="col-md-2">{{ form.serviceLevel }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.cacheControl.label }}</div>
+                <div class="col-md-2">{{ form.cacheControl }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.contentDisposition.label }}</div>
+                <div class="col-md-2">{{ form.contentDisposition }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.contentLanguage.label }}</div>
+                <div class="col-md-2">{{ form.contentLanguage }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.contentTypes.label }}</div>
+                <div class="col-md-2">{{ form.contentTypes }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.diskTimestampMetadataKey.label }}</div>
+                <div class="col-md-2">{{ form.diskTimestampMetadataKey }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.expires.label }}</div>
+                <div class="col-md-2">{{ form.expires }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.setContentEncodingForGzFiles.label }}</div>
+                <div class="col-md-2">{{ form.setContentEncodingForGzFiles }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.prefix.label }}</div>
+                <div class="col-md-3">{{ form.prefix }} /</div>
+            <p><br>
+                <div class="col-md-3">{{ form.staticMetadata.label }}</div>
+                <div class="col-md-2">{{ form.staticMetadata }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.storageClass.label }}</div>
+                <div class="col-md-2">{{ form.storageClass }}</div>
+            <p><br>
+        </div>
+<!-- Additional Options END-->
+<p></p>
+<!-- Customs Options -->
+        <strong>Show International Shipping (Customs) Options:
+            <a href="javascript:;" onClick="document.getElementById('hideaway').style.display='block';">Show</a>
+            <a href="javascript:;" onClick="document.getElementById('hideaway').style.display='none';">Hide</a>
+        </strong>
+
+        <div id="hideaway" style="display:none;">
+            <p class="text-primary">Required sections are in blue</p>
+                <div class="col-md-3 text-primary" >{{ form.dataDescription.label }}</div>
+                <div class="col-md-2">{{ form.dataDescription }}</div>
+            <p><br>
+                <div class="col-md-3 text-primary">{{ form.encryptedData.label }}</div>
+                <div class="col-md-2">{{ form.encryptedData }}</div>
+            <p><br>
+                <div class="col-md-3 text-primary">{{ form.exportCertifierName.label }}</div>
+                <div class="col-md-2">{{ form.exportCertifierName }}</div>
+            <p><br>
+                <div class="col-md-3 text-primary">{{ form.requiresExportLicense.label }}</div>
+                <div class="col-md-2">{{ form.requiresExportLicense }}</div>
+            <p><br>
+                <div class="col-md-3 text-primary">{{ form.deviceValue.label }}</div>
+                <div class="col-md-2">{{ form.deviceValue }}</div>
+            <p><br>
+                <div class="col-md-3 text-primary">{{ form.deviceCountryOfOrigin.label }}</div>
+                <div class="col-md-2">{{ form.deviceCountryOfOrigin }}</div>
+            <p><br>
+                <div class="col-md-3 text-primary">{{ form.deviceType.label }}</div>
+                <div class="col-md-2">{{ form.deviceType }}</div>
+            <p><br>
+                <div class="col-md-3">{{ form.typeOfExport.label }}</div>
+                <div class="col-md-2">{{ form.typeOfExport }}</div>
+        </div>
+<!-- Additional Options END-->
+            <p><br>
+                <div class="col-md-2">{{ form.submit }}</div>
+            <p><br>
+        </div>
+    </form>
+
+{% endblock %}

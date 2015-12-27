@@ -53,5 +53,6 @@ class S3ImportForm(Form):
     deviceCountryOfOrigin = TextField("Drive Manufacture Country",  [validators.required("Please a country, it's required")])
     deviceType = SelectField(u'Device Type', choices=[('', ''), ('externalStorageDevice', 'externalStorageDevice'), ('usbFlashDrive', 'usbFlashDrive'), ('sataDrive', 'sataDrive')])
     typeOfExport = SelectField(u'Type of Export', choices=[('', ''), ('return', 'return'), ('permanent', 'permanent'), ('temporary', 'temporary')])
+    archivecomment = TextField("Archive Comment")
     submit = SubmitField("Generate")
 
