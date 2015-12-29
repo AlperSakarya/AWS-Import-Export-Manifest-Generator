@@ -2,7 +2,7 @@
 A tool to generate AWS Import Export Manifest files done by Python Flask Micro Framework <br>
 Can also be deployed with AWS Elastic Beanstalk (you still have to create the EB environment)
 
-# Demo Project URL
+## Demo Project URL
 http://ie-manifest-generator.elasticbeanstalk.com/
 
 ## Screenshots
