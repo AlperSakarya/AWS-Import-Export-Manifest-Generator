@@ -193,6 +193,7 @@ def s3ex():
         deviceCountryOfOrigin = form.deviceCountryOfOrigin.data
         deviceType = form.deviceType.data
         typeOfExport = form.typeOfExport.data
+        fileSystem = form.fileSystem.data
         return render_template('s3exresults.html', form=form)
 
 if __name__ == "__main__":
