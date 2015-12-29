@@ -2,7 +2,7 @@ from flask.ext.wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField, PasswordField, validators, ValidationError, SelectField
 
 
-class S3ImportForm(Form):
+class AWSIEFormFields(Form):
     deviceId = TextField(u'Device ID', validators=[validators.required()])
     notificationEmail = TextField("Notification Email",  [validators.email("Please enter 7 characters to search")])
     region = SelectField(u'Region', choices=[('us-east-1', 'us-east-1'), ('us-west-1', 'us-west-1'),
@@ -54,5 +54,6 @@ class S3ImportForm(Form):
     deviceType = SelectField(u'Device Type', choices=[('', ''), ('externalStorageDevice', 'externalStorageDevice'), ('usbFlashDrive', 'usbFlashDrive'), ('sataDrive', 'sataDrive')])
     typeOfExport = SelectField(u'Type of Export', choices=[('', ''), ('return', 'return'), ('permanent', 'permanent'), ('temporary', 'temporary')])
     archivecomment = TextField("Archive Comment")
+    fileSystem = SelectField(u'File System', choices=[('', ''), ('NTFS', 'NTFS'), ('EXT4', 'EXT4')])
     submit = SubmitField("Generate")
 
